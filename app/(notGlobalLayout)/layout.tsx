@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "../globals.css";
 
 export const metadata: Metadata = {
   title: "Textify",
   description: "A collection of simple text functions",
 };
 
-export default function Layout({
+export default function NotGlobalLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
