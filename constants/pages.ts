@@ -1,5 +1,5 @@
 type PageHref =
-  | "convertcase"
+  | "convertCase"
   | "removeSpace"
   | "removeSpecial"
   | "convertCurrency";
@@ -11,7 +11,7 @@ type Page = {
 
 export const PAGES: Page[] = [
   {
-    href: "convertcase",
+    href: "convertCase",
     title: "대소문자 변환",
   },
   {
