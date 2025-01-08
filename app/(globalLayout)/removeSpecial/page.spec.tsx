@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, expect, vi, test } from "vitest";
-import RemoveSapce from "./page";
+import RemoveSpecial from "./page";
 
 Object.assign(navigator, {
   clipboard: {
@@ -8,36 +8,36 @@ Object.assign(navigator, {
   },
 });
 
-describe("RemoveSpace Component", () => {
-  render(<RemoveSapce />);
+describe("RemoveSpecial Component", () => {
+  render(<RemoveSpecial />);
   test("Render 테스트", () => {
     expect(screen.getByPlaceholderText("텍스트를 입력하세요")).toBeDefined();
-    expect(screen.getByTestId("removeChainSpaceBtn")).toBeDefined();
-    expect(screen.getByTestId("removeAllSpaceBtn")).toBeDefined();
+    expect(screen.getByTestId("removeSpecialBtn")).toBeDefined();
+    expect(screen.getByTestId("removeEmojiBtn")).toBeDefined();
   });
 
-  test("연속된 공백 제거", () => {
+  test("특수문자 제거", () => {
     const inputTextarea = screen.getByTestId("inputText");
-    const removeButton = screen.getByTestId("removeChainSpaceBtn");
+    const removeButton = screen.getByTestId("removeSpecialBtn");
     const transformedTextarea = screen.getByTestId("transformedText");
 
     fireEvent.change(inputTextarea, {
-      target: { value: "hello    world    " },
+      target: { value: "!@#$%^&*()_+" },
     });
     fireEvent.click(removeButton);
-    expect(transformedTextarea.innerHTML).toBe("hello world");
+    expect(transformedTextarea.innerHTML).toBe("");
   });
 
-  test("모든 공백 제거", () => {
+  test("모든 이모지 제거", () => {
     const inputTextarea = screen.getByTestId("inputText");
-    const removeButton = screen.getByTestId("removeAllSpaceBtn");
+    const removeButton = screen.getByTestId("removeEmojiBtn");
     const transformedTextarea = screen.getByTestId("transformedText");
 
     fireEvent.change(inputTextarea, {
-      target: { value: "hello    world    " },
+      target: { value: "😊😂😎🔥💬" },
     });
     fireEvent.click(removeButton);
 
-    expect(transformedTextarea.innerHTML).toBe("helloworld");
+    expect(transformedTextarea.innerHTML).toBe("");
   });
 });
