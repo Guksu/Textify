@@ -30,7 +30,7 @@ export default function TextArea({
 
   if (type === "readOnly") {
     return (
-      <div className="relative">
+      <div className="relative w-56 h-56">
         <textarea
           data-testid="transformedText"
           className="resize-none border border-gray-300 rounded-md outline-none w-56 h-56"
