@@ -2,10 +2,10 @@
 
 import { Btn, TextArea } from "@/components/Common";
 import useClipboard from "@/hooks/common/useClipboard";
-import { convertLoowerCase, convertUpperCase } from "@/utils/convertCase";
+import { removeAllSpace, removeChainSpace } from "@/utils/removeSpace";
 import { ChangeEvent, useState } from "react";
 
-export default function ConverCase() {
+export default function RemoveSapce() {
   const [inputText, setInputText] = useState<string>("");
   const [transformedText, setTransformedText] = useState<string>("");
   const { copyText } = useClipboard();
@@ -14,12 +14,12 @@ export default function ConverCase() {
     setInputText(e.target.value);
   };
 
-  const handleUppercase = () => {
-    setTransformedText(convertUpperCase(inputText));
+  const handleRemoveChainSapce = () => {
+    setTransformedText(removeChainSpace(inputText));
   };
 
-  const handleLowercase = () => {
-    setTransformedText(convertLoowerCase(inputText));
+  const handleRemoveAllSapce = () => {
+    setTransformedText(removeAllSpace(inputText));
   };
 
   const handleClipboard = () => {
@@ -30,14 +30,14 @@ export default function ConverCase() {
     <div>
       <div className="flex py-6 px-6 gap-5 justify-center">
         <Btn
-          testId="convertUpperBtn"
-          onClick={handleUppercase}
-          text="대문자로 변환"
+          testId="removeChainSpaceBtn"
+          onClick={handleRemoveChainSapce}
+          text="연속 공백제거"
         />
         <Btn
-          testId="convertLowerBtn"
-          onClick={handleLowercase}
-          text="소문자로 변환"
+          testId="removeAllSpaceBtn"
+          onClick={handleRemoveAllSapce}
+          text="모든 공백제거"
         />
       </div>
       <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

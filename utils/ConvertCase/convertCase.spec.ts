@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { convertLoowerCase, convertUpperCase } from ".";
+import { convertLoowerCase, convertUpperCase } from "./index";
 
 describe("입력된 모든 텍스트를 대문자로 변경한다", () => {
   const TEST_CASE = [
