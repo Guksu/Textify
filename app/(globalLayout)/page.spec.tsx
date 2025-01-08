@@ -24,9 +24,4 @@ describe("GNB가 화면에 렌더링된다.", () => {
     const link = screen.getByText("특수문자 제거");
     expect(link).toBeDefined();
   });
-
-  test("통화 변환", () => {
-    const link = screen.getByText("통화 변환");
-    expect(link).toBeDefined();
-  });
 });

@@ -1,5 +1,5 @@
 import Gnb from "@/components/Gnb";
-
+import { ToastContainer } from "react-toastify";
 export default function GlobalLayout({
   children,
 }: {
@@ -8,6 +8,7 @@ export default function GlobalLayout({
   return (
     <>
       <Gnb />
+      <ToastContainer position="bottom-right" theme="light" />
       {children}
     </>
   );

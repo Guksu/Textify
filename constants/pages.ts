@@ -1,8 +1,4 @@
-type PageHref =
-  | "convertCase"
-  | "removeSpace"
-  | "removeSpecial"
-  | "convertCurrency";
+type PageHref = "convertCase" | "removeSpace" | "removeSpecial";
 
 type Page = {
   href: PageHref;
@@ -21,9 +17,5 @@ export const PAGES: Page[] = [
   {
     href: "removeSpecial",
     title: "특수문자 제거",
-  },
-  {
-    href: "convertCurrency",
-    title: "통화 변환",
   },
 ];
