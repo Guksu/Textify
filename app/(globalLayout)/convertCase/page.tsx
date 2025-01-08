@@ -1,13 +1,14 @@
 "use client";
 
 import { Btn, TextArea } from "@/components/Common";
-import { ICONS } from "@/constants/icons";
+import useClipboard from "@/hooks/common/useClipboard";
 import { convertLoowerCase, convertUpperCase } from "@/utils/convertCase";
 import { ChangeEvent, useState } from "react";
 
 export default function ConverCase() {
   const [inputText, setInputText] = useState<string>("");
   const [transformedText, setTransformedText] = useState<string>("");
+  const { copyText } = useClipboard();
 
   const handleTextChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setInputText(e.target.value);
@@ -22,7 +23,7 @@ export default function ConverCase() {
   };
 
   const handleClipboard = () => {
-    navigator.clipboard.writeText(transformedText);
+    copyText(transformedText);
   };
 
   return (
@@ -47,19 +48,11 @@ export default function ConverCase() {
           placehohlder="텍스트를 입력하세요"
         />
 
-        <div className="relative">
-          <TextArea type="readOnly" value={transformedText} />
-          {/* TODO : 클릭시 toast추가 */}
-          {transformedText && (
-            <img
-              data-testid="clipboard"
-              className="absolute w-10 h-10 right-3 bottom-3 cursor-pointer"
-              src={ICONS.clipboard}
-              alt="clipboard"
-              onClick={handleClipboard}
-            />
-          )}
-        </div>
+        <TextArea
+          type="readOnly"
+          value={transformedText}
+          onClipboardClick={handleClipboard}
+        />
       </div>
     </div>
   );
