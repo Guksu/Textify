@@ -37,7 +37,6 @@ export default function TextArea({
           value={value}
           readOnly
         />
-        {/* TODO : 클릭시 toast추가 */}
         {value && (
           <img
             data-testid="clipboard"
