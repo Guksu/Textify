@@ -1,6 +1,7 @@
 "use client";
 
-import { Btn, TextArea } from "@/components/Common";
+import { Btn } from "@/components/Common";
+import TextAreaBox from "@/components/Common/TextAreaBox";
 import useClipboard from "@/hooks/common/useClipboard";
 import { removeEmoji, removeSpecial } from "@/utils/removeSpecial";
 import { ChangeEvent, useState } from "react";
@@ -40,20 +41,13 @@ export default function RemoveSpecial() {
           text="이모지 제거"
         />
       </div>
-      <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <TextArea
-          type="input"
-          value={inputText}
-          onChange={handleTextChange}
-          placehohlder="텍스트를 입력하세요"
-        />
-
-        <TextArea
-          type="readOnly"
-          value={transformedText}
-          onClipboardClick={handleClipboard}
-        />
-      </div>
+      <TextAreaBox
+        handleClipboard={handleClipboard}
+        handleTextChange={handleTextChange}
+        inputText={inputText}
+        transformedText={transformedText}
+        placehohlder="텍스트를 입력하세요"
+      />
     </div>
   );
 }

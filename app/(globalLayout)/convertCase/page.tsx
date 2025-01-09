@@ -1,6 +1,7 @@
 "use client";
 
-import { Btn, TextArea } from "@/components/Common";
+import { Btn } from "@/components/Common";
+import TextAreaBox from "@/components/Common/TextAreaBox";
 import useClipboard from "@/hooks/common/useClipboard";
 import { convertLoowerCase, convertUpperCase } from "@/utils/convertCase";
 import { ChangeEvent, useState } from "react";
@@ -40,20 +41,13 @@ export default function ConverCase() {
           text="소문자로 변환"
         />
       </div>
-      <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <TextArea
-          type="input"
-          value={inputText}
-          onChange={handleTextChange}
-          placehohlder="텍스트를 입력하세요"
-        />
-
-        <TextArea
-          type="readOnly"
-          value={transformedText}
-          onClipboardClick={handleClipboard}
-        />
-      </div>
+      <TextAreaBox
+        handleClipboard={handleClipboard}
+        handleTextChange={handleTextChange}
+        inputText={inputText}
+        transformedText={transformedText}
+        placehohlder="텍스트를 입력하세요"
+      />
     </div>
   );
 }
