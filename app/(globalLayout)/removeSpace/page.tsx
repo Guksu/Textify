@@ -28,7 +28,7 @@ export default function RemoveSapce() {
   };
 
   return (
-    <div>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-6">
       <div className="flex py-6 px-6 gap-5 justify-center">
         <Btn
           testId="removeChainSpaceBtn"

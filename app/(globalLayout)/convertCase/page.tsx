@@ -6,7 +6,7 @@ import useClipboard from "@/hooks/common/useClipboard";
 import { convertLoowerCase, convertUpperCase } from "@/utils/convertCase";
 import { ChangeEvent, useState } from "react";
 
-export default function ConverCase() {
+export default function ConvertCasePage() {
   const [inputText, setInputText] = useState<string>("");
   const [transformedText, setTransformedText] = useState<string>("");
   const { copyText } = useClipboard();
@@ -28,7 +28,7 @@ export default function ConverCase() {
   };
 
   return (
-    <div>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-6">
       <div className="flex py-6 px-6 gap-5 justify-center">
         <Btn
           testId="convertUpperBtn"

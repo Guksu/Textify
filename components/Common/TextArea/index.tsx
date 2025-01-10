@@ -1,5 +1,4 @@
-import { ICONS } from "@/constants/icons";
-import { ChangeEvent } from "react";
+import React, { ChangeEvent } from "react";
 
 interface Props {
   type: "input" | "readOnly";
@@ -20,7 +19,7 @@ export default function TextArea({
     return (
       <textarea
         data-testid="inputText"
-        className="resize-none border border-gray-300 rounded-md outline-none w-56 h-56"
+        className="resize-none border border-gray-300 rounded-md outline-none w-56 h-56 p-4 shadow-sm focus:ring-2 focus:ring-blue-500"
         value={value}
         onChange={onChange}
         placeholder={placehohlder}
@@ -32,21 +31,21 @@ export default function TextArea({
     return (
       <div className="relative w-56 h-56">
         <textarea
-          data-testid="transformedText"
-          className="resize-none border border-gray-300 rounded-md outline-none w-56 h-56"
+          data-testid="readOnlyText"
+          className="resize-none border border-gray-300 rounded-md outline-none w-full h-full p-4 bg-gray-100 shadow-sm"
           value={value}
           readOnly
+          placeholder={placehohlder}
         />
-        {value && (
-          <img
-            data-testid="clipboard"
-            className="absolute w-10 h-10 right-3 bottom-3 cursor-pointer"
-            src={ICONS.clipboard}
-            alt="clipboard"
-            onClick={onClipboardClick}
-          />
-        )}
+        <button
+          className="absolute top-2 right-2 bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+          onClick={onClipboardClick}
+        >
+          📋
+        </button>
       </div>
     );
   }
+
+  return null;
 }

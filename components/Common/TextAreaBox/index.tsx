@@ -1,11 +1,11 @@
-import { ChangeEvent } from "react";
+import React from "react";
 import TextArea from "../TextArea";
 
 interface Props {
+  handleClipboard: () => void;
+  handleTextChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   inputText: string;
   transformedText: string;
-  handleTextChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
-  handleClipboard: () => void;
   placehohlder?: string;
 }
 
@@ -16,22 +16,20 @@ export default function TextAreaBox({
   transformedText,
   placehohlder,
 }: Props) {
-  {
-    return (
-      <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <TextArea
-          type="input"
-          value={inputText}
-          onChange={handleTextChange}
-          placehohlder={placehohlder}
-        />
+  return (
+    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center p-4 bg-white shadow-md rounded-md">
+      <TextArea
+        type="input"
+        value={inputText}
+        onChange={handleTextChange}
+        placehohlder={placehohlder}
+      />
 
-        <TextArea
-          type="readOnly"
-          value={transformedText}
-          onClipboardClick={handleClipboard}
-        />
-      </div>
-    );
-  }
+      <TextArea
+        type="readOnly"
+        value={transformedText}
+        onClipboardClick={handleClipboard}
+      />
+    </div>
+  );
 }
