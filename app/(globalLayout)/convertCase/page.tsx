@@ -1,11 +1,12 @@
 "use client";
 
-import { Btn, TextArea } from "@/components/Common";
+import { Btn } from "@/components/Common";
+import TextAreaBox from "@/components/Common/TextAreaBox";
 import useClipboard from "@/hooks/common/useClipboard";
 import { convertLoowerCase, convertUpperCase } from "@/utils/convertCase";
 import { ChangeEvent, useState } from "react";
 
-export default function ConverCase() {
+export default function ConvertCasePage() {
   const [inputText, setInputText] = useState<string>("");
   const [transformedText, setTransformedText] = useState<string>("");
   const { copyText } = useClipboard();
@@ -27,7 +28,7 @@ export default function ConverCase() {
   };
 
   return (
-    <div>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-6">
       <div className="flex py-6 px-6 gap-5 justify-center">
         <Btn
           testId="convertUpperBtn"
@@ -40,20 +41,13 @@ export default function ConverCase() {
           text="소문자로 변환"
         />
       </div>
-      <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <TextArea
-          type="input"
-          value={inputText}
-          onChange={handleTextChange}
-          placehohlder="텍스트를 입력하세요"
-        />
-
-        <TextArea
-          type="readOnly"
-          value={transformedText}
-          onClipboardClick={handleClipboard}
-        />
-      </div>
+      <TextAreaBox
+        handleClipboard={handleClipboard}
+        handleTextChange={handleTextChange}
+        inputText={inputText}
+        transformedText={transformedText}
+        placehohlder="텍스트를 입력하세요"
+      />
     </div>
   );
 }
